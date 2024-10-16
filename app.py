@@ -10,7 +10,7 @@ app = Flask(__name__, template_folder='template')
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'udla1'
+app.config['MYSQL_PASSWORD'] = 'Mamifer1'
 app.config['MYSQL_DB'] = 'minicore'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(app)
@@ -24,7 +24,7 @@ def mostrar_comisiones():
     fecha_inicio = request.form.get('fecha_inicio')
     fecha_fin = request.form.get('fecha_fin')
     cur = mysql.connection.cursor()
-    result = cur.execute("SELECT usuarios.nombre, usuarios.apellido, SUM(ventas.monto) AS total_ventas FROM ventas JOIN usuarios ON ventas.idusuario = usuarios.idusuarios WHERE ventas.fecha BETWEEN %s AND %s GROUP BY usuarios.nombre, usuarios.apellido", (fecha_inicio, fecha_fin))
+    result = cur.execute("SELECT usuarios.nombre, usuarios.apellido, SUM(ventas.monto) AS total_ventas FROM ventas JOIN usuarios ON ventas.idusuarios = usuarios.idusuarios WHERE ventas.fecha BETWEEN %s AND %s GROUP BY usuarios.nombre, usuarios.apellido", (fecha_inicio, fecha_fin))
     comision = cur.fetchall()
     cur.close()
 
