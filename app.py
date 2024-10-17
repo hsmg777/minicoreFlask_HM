@@ -28,6 +28,7 @@ def mostrar_comisiones():
     comision = cur.fetchall()
     cur.close()
 
+
     return render_template('comision.html', comision=comision)
 
 @app.route('/buscar_comisiones', methods=['GET'])
